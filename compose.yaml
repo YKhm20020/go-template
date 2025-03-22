@@ -8,13 +8,25 @@
 # database or a cache. For examples, see the Awesome Compose repository:
 # https://github.com/docker/awesome-compose
 services:
-  server:
+  app:
     build:
       context: .
-      target: final
+      dockerfile: docker/go/Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - ./src/app:/src/app
     ports:
       - 8080:8080
+    tty: true
 
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: go-template-db
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - 3306:3306
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to
 # start the database before your application. The `db-data` volume persists the
