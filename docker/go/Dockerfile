@@ -1,13 +1,13 @@
 FROM golang:1.24.1
 
-WORKDIR /src/app
+WORKDIR /app
 
 # install air
 RUN go install github.com/air-verse/air@latest
 
-COPY go.mod go.sum /src/
-RUN cd /src && go mod download
+COPY go.mod go.sum /app/
+RUN cd /app && go mod download
 
-COPY src/app .
+COPY app .
 
 CMD ["air"]
