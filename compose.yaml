@@ -25,6 +25,8 @@ services:
     environment:
       MYSQL_DATABASE: go-template-db
       MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
 # The commented out section below is an example of how to define a PostgreSQL
