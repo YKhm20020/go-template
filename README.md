@@ -50,3 +50,52 @@ DB_ROOT_PASSWORD=rootpassword
 DB_USER=db-user
 DB_PASSWORD=db-password
 ```
+
+# 動作確認
+
+http://localhost:8080 で、以下のようにサンプルのメッセージが取得できていることを確認する。
+
+```
+{
+"message": "Hello, Gin + MySQL + Docker + Air"
+}
+```
+
+http://localhost:8080/accounts で、以下のようにサンプルデータを一覧表示できていることを確認する。
+
+```
+[
+    {
+        "ID": 1,
+        "Name": "a1_name",
+        "Password": "a1_password"
+    },
+    {
+        "ID": 2,
+        "Name": "a2_name",
+        "Password": "a2_password"
+    },
+    {
+        "ID": 3,
+        "Name": "a3_name",
+        "Password": "a3_password"
+    },
+    {
+        "ID": 4,
+        "Name": "a4_name",
+        "Password": "a4_password"
+    }
+]
+```
+
+http://localhost:8080/accounts/1 で、ID が 1 のサンプルデータを表示できていることを確認する。
+
+```
+[
+    {
+        "ID": 1,
+        "Name": "a1_name",
+        "Password": "a1_password"
+    },
+]
+```
